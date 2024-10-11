@@ -9,7 +9,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  min-width: 1000px;
   user-select: none;
   margin: 0;
   backdrop-filter: blur(20px);
@@ -18,11 +17,19 @@ body {
   font-style: normal;
 }
 
+.core {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(9, 50px);
   grid-gap: 0px;
   justify-content: center;
+  align-items: center;
   margin: 10px;
   color: white;
 }
@@ -60,7 +67,7 @@ body {
 .cell.right {
   border-right: 1px solid rgb(255, 255, 255);
 }
-  
+
 .cell:hover {
   background-color: rgba(255, 255, 255, 1);
   box-shadow: 0 0 30px rgb(255, 255, 255);
@@ -69,12 +76,10 @@ body {
 
 .cell.hovered {
   background-color: rgba(255, 255, 255, 0.3);
-  
 }
 
-.same-value{
+.same-value {
   color: rgb(229, 129, 62);
-
 }
 
 .buttons {
@@ -106,16 +111,82 @@ body {
   transform: scale(0.95);
 }
 
-.core {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+@media (max-width: 1200px) {
+  .container {
+    grid-template-columns: repeat(9, 45px);
+  }
 
+  .cell {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 36px;
+  }
 
-@media (max-width: 800px) {
-  body {
-    justify-content: flex-start;
+  .button {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 18px;
   }
 }
 
+@media (max-width: 1000px) {
+  .container {
+    grid-template-columns: repeat(9, 40px);
+  }
+
+  .cell {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 32px;
+  }
+
+  .button {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    grid-template-columns: repeat(9, 35px);
+  }
+
+  .cell {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 28px;
+  }
+
+  .button {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: repeat(9, 30px);
+  }
+
+  .cell {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 24px;
+  }
+
+  .button {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+  }
+}

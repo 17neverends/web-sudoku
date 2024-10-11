@@ -46,13 +46,14 @@ function create() {
 }
 
 function select_cell(cell) {
+  if (original_cell(cell)) return;
   if (current) current.classList.remove('focused');
   current = cell;
   cell.classList.add('focused');
 }
 
 function input_value(event) {
-  if (current) {
+  if (current && !original_cell(current)) {
     const key = event.key;
     if (/^[1-9]$/.test(key)) {
       const value = parseInt(key);
