@@ -55,6 +55,7 @@ function changeLevel() {
   resetBoard();
   create();  
   resetTimer();
+  startTimer();
 }
 
 document.getElementById('difficulty-level').onclick = function() {
