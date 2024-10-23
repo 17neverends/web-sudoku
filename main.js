@@ -216,8 +216,6 @@ function create() {
       if (j % 3 === 2) cell.classList.add('right');
       cell.id = `cell${i * 9 + j + 1}`;
       cell.textContent = sudoku[i][j] !== 0 ? sudoku[i][j] : '';
-      cell.addEventListener('mouseover', () => mouse_in(cell));
-      cell.addEventListener('mouseout', () => mouse_out());
       cell.addEventListener('click', () => select_cell(cell));
       container.appendChild(cell);
     }
@@ -225,11 +223,62 @@ function create() {
 }
 
 function select_cell(cell) {
-  if (original_cell(cell)) return;
+  if (current === cell) {
+    cell.classList.remove('focused');
+    mouse_out();
+    current = null;
+    return;
+  }
 
-  if (current) current.classList.remove('focused');
+  if (current) {
+    current.classList.remove('focused');
+    mouse_out();
+  }
+
   current = cell;
   cell.classList.add('focused');
+
+  if (cell.textContent === '') {
+    highlightLineAndSquare(cell);
+  } else {
+    highlightIdenticalNumbers(cell);
+  }
+}
+
+function highlightIdenticalNumbers(cell) {
+  const cell_value = cell.textContent;
+
+  const cells = document.querySelectorAll('.cell');
+  cells.forEach((c) => {
+    if (c.textContent === cell_value && c !== cell) {
+      c.classList.add('same-value');
+    }
+  });
+
+  highlightLineAndSquare(cell);
+}
+
+function highlightLineAndSquare(cell) {
+  const index = parseInt(cell.id.substring(4));
+  const cell_i = Math.floor((index - 1) / 9);
+  const cell_j = (index - 1) % 9;
+
+  for (let i = 0; i < 9; i++) {
+    const column = document.getElementById(`cell${i * 9 + cell_j + 1}`);
+    column.classList.add('hovered');
+  }
+
+  for (let j = 0; j < 9; j++) {
+    const row = document.getElementById(`cell${cell_i * 9 + j + 1}`);
+    row.classList.add('hovered');
+  }
+
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      const square = document.getElementById(`cell${(Math.floor(cell_i / 3) * 27) + (i * 9) + (Math.floor(cell_j / 3) * 3) + j + 1}`);
+      square.classList.add('hovered');
+    }
+  }
 }
 
 function input_value(event) {
@@ -323,12 +372,10 @@ function inputNumber(value) {
 function mouse_out() {
   const cells = document.querySelectorAll('.cell');
   cells.forEach((c) => {
-    if (c !== current) {
       c.classList.remove('same-value', 'hovered', 'hover');
-    }
+    
   });
 }
-
 window.onload = function () {
   create();
   document.getElementById('difficulty-level').innerText = `Сложность: ${currentLevel}`;
