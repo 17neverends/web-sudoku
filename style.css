@@ -158,12 +158,30 @@ body {
   color: #555;
 }
 
+#newGameButton {
+  background-color: transparent;
+  color: black;
+  border: 2px solid black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#newGameButton:hover {
+  background-color: black;
+  color: white;
+}
+
 #popup button {
   background-color: transparent;
   color: black;
   border: 2px solid black;
   padding: 10px 20px;
   border-radius: 5px;
+  margin-top: 20px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
@@ -202,6 +220,38 @@ body {
 }
 
 .restart-button button:hover {
+  transform: scale(1.1);
+}
+
+#hint-text {
+  position: absolute;
+  top: 150px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  color: #fff;
+  text-align: center;
+}
+
+.hint-button button {
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  background-image: url(static/hint.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  font-size: 24px;
+  padding: 0;
+  transition: transform 0.3s ease;
+}
+
+.hint-button button:hover {
   transform: scale(1.1);
 }
 

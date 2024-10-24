@@ -7,53 +7,182 @@ let currentLevel = "Легкая";
 
 const sudokuLevels = {
   "Легкая": [
-    [5, 3, 0, 0, 7, 0, 0, 0, 0],
-    [6, 0, 0, 1, 9, 5, 0, 0, 0],
-    [0, 9, 8, 0, 0, 0, 0, 6, 0],
-    [8, 0, 0, 0, 6, 0, 0, 0, 3],
-    [4, 0, 0, 8, 0, 3, 0, 0, 1],
-    [7, 0, 0, 0, 2, 0, 0, 0, 6],
-    [0, 6, 0, 0, 0, 0, 2, 8, 0],
-    [0, 0, 0, 4, 1, 9, 0, 0, 5],
-    [0, 0, 0, 0, 8, 0, 0, 7, 9]
+    {
+      initial: [
+        [5, 3, 4, 6, 7, 8, 9, 1, 2],
+        [6, 7, 0, 1, 9, 5, 3, 4, 8],
+        [1, 9, 8, 3, 4, 2, 5, 6, 7],
+        [8, 5, 9, 7, 6, 1, 4, 2, 3],
+        [4, 2, 6, 8, 5, 3, 7, 9, 1],
+        [7, 1, 3, 9, 2, 4, 8, 5, 6],
+        [9, 6, 1, 5, 3, 7, 2, 8, 4],
+        [2, 8, 7, 4, 1, 9, 6, 3, 5],
+        [3, 4, 5, 2, 8, 6, 1, 7, 9]
+      ],
+      solution: [
+        [5, 3, 4, 6, 7, 8, 9, 1, 2],
+        [6, 7, 2, 1, 9, 5, 3, 4, 8],
+        [1, 9, 8, 3, 4, 2, 5, 6, 7],
+        [8, 5, 9, 7, 6, 1, 4, 2, 3],
+        [4, 2, 6, 8, 5, 3, 7, 9, 1],
+        [7, 1, 3, 9, 2, 4, 8, 5, 6],
+        [9, 6, 1, 5, 3, 7, 2, 8, 4],
+        [2, 8, 7, 4, 1, 9, 6, 3, 5],
+        [3, 4, 5, 2, 8, 6, 1, 7, 9]
+      ]
+    },
+    {
+      initial: [
+        [8, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 3, 6, 0, 0, 0, 0, 0],
+        [0, 7, 0, 0, 9, 0, 2, 0, 0],
+        [0, 5, 0, 0, 0, 7, 0, 0, 0],
+        [0, 0, 0, 0, 4, 5, 7, 0, 0],
+        [0, 0, 0, 1, 0, 0, 0, 3, 0],
+        [0, 0, 1, 0, 0, 0, 0, 6, 8],
+        [0, 0, 8, 5, 0, 0, 0, 1, 0],
+        [0, 9, 0, 0, 0, 0, 4, 0, 0]
+      ],
+      solution: [
+        [8, 1, 2, 7, 5, 3, 6, 4, 9],
+        [9, 4, 3, 6, 8, 2, 1, 7, 5],
+        [6, 7, 5, 4, 9, 1, 2, 8, 3],
+        [1, 5, 4, 2, 3, 7, 8, 9, 6],
+        [3, 6, 9, 8, 4, 5, 7, 2, 1],
+        [2, 8, 7, 1, 6, 9, 5, 3, 4],
+        [5, 2, 1, 9, 7, 4, 3, 6, 8],
+        [4, 3, 8, 5, 2, 6, 9, 1, 7],
+        [7, 9, 6, 3, 1, 8, 4, 5, 2]
+      ]
+    }
   ],
   "Средняя": [
-    [0, 3, 0, 6, 0, 0, 0, 0, 0],
-    [6, 0, 0, 1, 9, 5, 0, 0, 0],
-    [0, 9, 8, 0, 0, 0, 0, 6, 0],
-    [8, 0, 0, 0, 6, 0, 0, 0, 3],
-    [4, 0, 0, 8, 0, 3, 0, 0, 1],
-    [7, 0, 0, 0, 2, 0, 0, 0, 6],
-    [0, 6, 0, 0, 0, 0, 2, 8, 0],
-    [0, 0, 0, 4, 1, 9, 0, 0, 5],
-    [0, 0, 0, 0, 8, 0, 0, 7, 9]
+    {
+      initial: [
+        [0, 0, 0, 6, 0, 0, 4, 0, 0],
+        [7, 0, 0, 0, 0, 3, 6, 0, 0],
+        [0, 0, 0, 0, 9, 1, 0, 8, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 5, 0, 1, 8, 0, 0, 0, 3],
+        [0, 0, 0, 3, 0, 6, 0, 4, 5],
+        [0, 4, 0, 2, 0, 0, 0, 6, 0],
+        [9, 0, 3, 0, 0, 0, 0, 0, 0],
+        [0, 2, 0, 0, 0, 0, 1, 0, 0]
+      ],
+      solution: [
+        [5, 8, 1, 6, 2, 7, 4, 3, 9],
+        [7, 9, 2, 8, 4, 3, 6, 5, 1],
+        [4, 6, 3, 5, 9, 1, 7, 8, 2],
+        [3, 7, 4, 9, 5, 2, 8, 1, 6],
+        [6, 5, 9, 1, 8, 4, 2, 7, 3],
+        [2, 1, 8, 3, 7, 6, 9, 4, 5],
+        [1, 4, 5, 2, 3, 9, 7, 6, 8],
+        [9, 2, 6, 4, 1, 8, 5, 9, 7],
+        [8, 3, 7, 7, 6, 5, 1, 2, 4]
+      ]
+    },
+    {
+      initial: [
+        [0, 0, 5, 3, 0, 0, 0, 0, 0],
+        [8, 0, 0, 0, 0, 0, 0, 2, 0],
+        [0, 7, 0, 0, 1, 0, 5, 0, 0],
+        [4, 0, 0, 0, 0, 5, 3, 0, 0],
+        [0, 1, 0, 0, 7, 0, 0, 0, 6],
+        [0, 0, 3, 2, 0, 0, 0, 8, 0],
+        [0, 6, 0, 5, 0, 0, 0, 0, 9],
+        [0, 0, 4, 0, 0, 0, 0, 3, 0],
+        [0, 0, 0, 0, 0, 9, 7, 0, 0]
+      ],
+      solution: [
+        [1, 4, 5, 3, 2, 7, 6, 9, 8],
+        [8, 3, 9, 6, 5, 4, 1, 2, 7],
+        [6, 7, 2, 9, 1, 8, 5, 4, 3],
+        [4, 9, 6, 1, 8, 5, 3, 7, 2],
+        [2, 1, 8, 4, 7, 3, 9, 5, 6],
+        [7, 5, 3, 2, 9, 6, 4, 8, 1],
+        [3, 6, 7, 5, 4, 2, 8, 1, 9],
+        [9, 8, 4, 7, 6, 1, 2, 3, 5],
+        [5, 2, 1, 8, 3, 9, 7, 6, 4]
+      ]
+    }
   ],
   "Сложная": [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [6, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [8, 0, 0, 0, 6, 0, 0, 0, 3],
-    [4, 0, 0, 8, 0, 3, 0, 0, 1],
-    [7, 0, 0, 0, 2, 0, 0, 0, 6],
-    [0, 6, 0, 0, 0, 0, 2, 8, 0],
-    [0, 0, 0, 4, 1, 9, 0, 0, 5],
-    [0, 0, 0, 0, 8, 0, 0, 7, 9]
+    {
+      initial: [
+        [0, 0, 0, 6, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 4, 0, 0],
+        [0, 0, 9, 0, 0, 3, 0, 5, 0],
+        [5, 0, 0, 0, 0, 0, 9, 0, 6],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [2, 0, 3, 0, 0, 0, 0, 0, 5],
+        [0, 4, 0, 7, 0, 0, 0, 3, 0],
+        [0, 0, 1, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0]
+      ],
+      solution: [
+        [3, 8, 4, 6, 1, 9, 2, 7, 5],
+        [6, 1, 5, 3, 7, 2, 4, 9, 8],
+        [7, 2, 9, 8, 4, 3, 1, 5, 6],
+        [5, 3, 2, 4, 8, 7, 9, 1, 6],
+        [9, 7, 6, 5, 2, 1, 3, 8, 4],
+        [2, 4, 3, 9, 6, 8, 7, 5, 1],
+        [1, 5, 8, 7, 9, 4, 6, 3, 2],
+        [4, 9, 7, 1, 3, 6, 5, 2, 9],
+        [8, 6, 1, 2, 5, 1, 9, 4, 3]
+      ]
+    },
+    {
+      initial: [
+        [0, 0, 0, 0, 0, 0, 0, 6, 0],
+        [0, 0, 0, 1, 0, 4, 0, 0, 0],
+        [2, 0, 0, 0, 0, 0, 0, 0, 9],
+        [0, 0, 0, 0, 0, 9, 0, 8, 0],
+        [0, 0, 3, 0, 5, 0, 6, 0, 0],
+        [0, 4, 0, 3, 0, 0, 0, 0, 0],
+        [9, 0, 0, 0, 0, 0, 0, 0, 3],
+        [0, 0, 0, 8, 0, 6, 0, 0, 0],
+        [0, 7, 0, 0, 0, 0, 0, 0, 0]
+      ],      
+      solution: [
+        [1, 8, 9, 7, 3, 5, 4, 6, 2],
+        [3, 5, 7, 1, 2, 4, 9, 8, 6],
+        [2, 6, 4, 9, 8, 1, 7, 5, 9],
+        [7, 9, 1, 5, 6, 9, 3, 8, 4],
+        [8, 2, 3, 4, 5, 7, 6, 9, 1],
+        [6, 4, 5, 3, 9, 2, 8, 7, 9],
+        [9, 1, 6, 2, 4, 8, 5, 3, 7],
+        [4, 3, 7, 8, 1, 6, 2, 9, 5],
+        [5, 7, 8, 9, 7, 1, 3, 2, 4]
+      ]
+    }
   ]
 };
 
-let sudoku = JSON.parse(JSON.stringify(sudokuLevels[currentLevel]));
+let win;
 
-let originalSudoku = JSON.parse(JSON.stringify(sudokuLevels[currentLevel]));
+
+function getRandomBoard(currentLevel) {
+  const levelBoards = sudokuLevels[currentLevel];
+  const randomIndex = Math.floor(Math.random() * levelBoards.length);
+  win = levelBoards[randomIndex].solution;
+  return levelBoards[randomIndex].initial;
+}
+
+
+let sudoku = JSON.parse(JSON.stringify(getRandomBoard(currentLevel)));
+
+let originalSudoku = JSON.parse(JSON.stringify(getRandomBoard(currentLevel)));
+
 
 function changeLevel() {
   const levels = Object.keys(sudokuLevels);
   const currentIndex = levels.indexOf(currentLevel);
   currentLevel = levels[(currentIndex + 1) % levels.length];
-  document.getElementById('difficulty-level').innerText = `Сложность: ${currentLevel}`;
-  originalSudoku = JSON.parse(JSON.stringify(sudokuLevels[currentLevel]));
+  originalSudoku = JSON.parse(JSON.stringify(getRandomBoard(currentLevel)));
   sudoku = JSON.parse(JSON.stringify(originalSudoku));
+  document.getElementById('difficulty-level').innerText = `Сложность: ${currentLevel}`;
   resetBoard();
-  create();  
+  create();
   resetTimer();
   startTimer();
 }
@@ -61,18 +190,6 @@ function changeLevel() {
 document.getElementById('difficulty-level').onclick = function() {
   changeLevel();
 };
-
-const win = [
-  [5, 3, 4, 6, 7, 8, 9, 1, 2],
-  [6, 7, 2, 1, 9, 5, 3, 4, 8],
-  [1, 9, 8, 3, 4, 2, 5, 6, 7],
-  [8, 5, 9, 7, 6, 1, 4, 2, 3],
-  [4, 2, 6, 8, 5, 3, 7, 9, 1],
-  [7, 1, 3, 9, 2, 4, 8, 5, 6],
-  [9, 6, 1, 5, 3, 7, 2, 8, 4],
-  [2, 8, 7, 4, 1, 9, 6, 3, 5],
-  [3, 4, 5, 2, 8, 6, 1, 7, 9]
-];
 
 
 function startTimer() {
@@ -96,7 +213,7 @@ function resetTimer() {
 function showModal() {
   const modal = document.getElementById('modal');
   const resultMessage = document.getElementById('resultMessage');
-  resultMessage.innerText = `Вы победили! Время: ${(new Date() - time_count) / 1000} секунд, количество ходов: ${count_changes}`;
+  resultMessage.innerText = `Вы победили! Время: ${(new Date() - time_count) / 1000} секунд`;
   modal.style.display = "block";
 }
 
@@ -196,6 +313,14 @@ document.getElementById('start-game-button').onclick = function() {
   startTimer();
 };
 
+document.getElementById('newGameButton').onclick = function() {
+  document.getElementById('modal').style.display = "none";
+  changeLevel();
+  time_count = new Date();
+  
+  startTimer();
+};
+
 renderLeaderboard(leaderboardData);
 
 
@@ -288,7 +413,10 @@ function input_value(event) {
       const value = parseInt(key);
         update(current, value);
         if (check_win()) {
-          alert('Вы победили! Время: ' + (new Date() - timer) / 1000);
+          showModal();
+          resetTimer();
+          resetTimer();
+
           timer = 0;
         }
       
@@ -362,7 +490,9 @@ function inputNumber(value) {
   if (current) {
       update(current, value);
       if (check_win()) {
-        alert('Вы победили! Время: ' + (new Date() - timer) / 1000);
+        showModal()
+        resetTimer();
+
         timer = 0;
       }
     
@@ -380,4 +510,56 @@ window.onload = function () {
   create();
   document.getElementById('difficulty-level').innerText = `Сложность: ${currentLevel}`;
   document.addEventListener('keydown', input_value);
+};
+
+
+function giveHint() {
+  if (hintRemaining === 0) {
+    return;
+  }
+  const emptyCells = [];
+  for (let row = 0; row < sudoku.length; row++) {
+    for (let col = 0; col < sudoku[row].length; col++) {
+      if (sudoku[row][col] === 0) {
+        emptyCells.push({ row, col });
+      }
+    }
+  }
+
+  if (emptyCells.length > 0) {
+    const randomIndex = Math.floor(Math.random() * emptyCells.length);
+    const { row, col } = emptyCells[randomIndex];
+
+    const currentBoard = sudokuLevels[currentLevel].find(
+      board => JSON.stringify(board.initial) === JSON.stringify(originalSudoku)
+    );
+
+    
+    
+    const solutionBoard = currentBoard.solution;
+    sudoku[row][col] = solutionBoard[row][col];
+
+    updateBoardUI(row, col, sudoku[row][col]);
+    hintRemaining--;
+    document.getElementById('hint-text').textContent = `${hintRemaining}/${maxHints}`;
+    check_win();
+  }
+}
+
+const maxHints = 3;
+
+let hintRemaining = 3;
+
+document.getElementById('hint-text').textContent = `${hintRemaining}/${maxHints}`;
+
+function updateBoardUI(row, col, value) {
+  
+  const cellNumber = row * 9 + col + 1;
+  const cell = document.getElementById(`cell${cellNumber}`);
+  cell.innerText = value;
+  cell.classList.add('hint-cell');
+}
+
+document.getElementById('hint-button').onclick = function() {
+  giveHint();
 };
