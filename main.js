@@ -9,15 +9,15 @@ const sudokuLevels = {
   "Легкая": [
     {
       initial: [
-        [5, 3, 4, 6, 7, 8, 9, 1, 2],
-        [6, 7, 0, 1, 9, 5, 3, 4, 8],
-        [1, 9, 8, 3, 4, 2, 5, 6, 7],
-        [8, 5, 9, 7, 6, 1, 4, 2, 3],
-        [4, 2, 6, 8, 5, 3, 7, 9, 1],
-        [7, 1, 3, 9, 2, 4, 8, 5, 6],
-        [9, 6, 1, 5, 3, 7, 2, 8, 4],
-        [2, 8, 7, 4, 1, 9, 6, 3, 5],
-        [3, 4, 5, 2, 8, 6, 1, 7, 9]
+        [5, 3, 0, 0, 7, 0, 0, 0, 0],
+        [6, 0, 0, 1, 9, 5, 0, 0, 0],
+        [0, 9, 8, 0, 0, 0, 0, 6, 0],
+        [8, 0, 0, 0, 6, 0, 0, 0, 3],
+        [4, 0, 0, 8, 0, 3, 0, 0, 1],
+        [7, 0, 0, 0, 2, 0, 0, 0, 6],
+        [0, 6, 0, 0, 0, 0, 2, 8, 0],
+        [0, 0, 0, 4, 1, 9, 0, 0, 5],
+        [0, 0, 0, 0, 8, 0, 0, 7, 9]
       ],
       solution: [
         [5, 3, 4, 6, 7, 8, 9, 1, 2],
@@ -168,18 +168,20 @@ function getRandomBoard(currentLevel) {
   return levelBoards[randomIndex].initial;
 }
 
+random = getRandomBoard(currentLevel);
 
-let sudoku = JSON.parse(JSON.stringify(getRandomBoard(currentLevel)));
+var sudoku = JSON.parse(JSON.stringify(random));
 
-let originalSudoku = JSON.parse(JSON.stringify(getRandomBoard(currentLevel)));
+var originalSudoku = JSON.parse(JSON.stringify(random));
 
 
 function changeLevel() {
   const levels = Object.keys(sudokuLevels);
   const currentIndex = levels.indexOf(currentLevel);
   currentLevel = levels[(currentIndex + 1) % levels.length];
-  originalSudoku = JSON.parse(JSON.stringify(getRandomBoard(currentLevel)));
-  sudoku = JSON.parse(JSON.stringify(originalSudoku));
+  random = getRandomBoard(currentLevel);
+  sudoku = JSON.parse(JSON.stringify(random));
+  originalSudoku = JSON.parse(JSON.stringify(random));
   document.getElementById('difficulty-level').innerText = `Сложность: ${currentLevel}`;
   resetBoard();
   create();
@@ -407,7 +409,9 @@ function highlightLineAndSquare(cell) {
 }
 
 function input_value(event) {
+  
   if (current && !original_cell(current)) {
+
     const key = event.key;
     if (/^[1-9]$/.test(key)) {
       const value = parseInt(key);
@@ -434,7 +438,7 @@ function check_win() {
 function original_cell(cell) {
   const index = parseInt(cell.id.substring(4));
   const row = Math.floor((index - 1) / 9);
-  const col = (index - 1) % 9;
+  const col = (index - 1) % 9;  
   return originalSudoku[row][col] !== 0;
 }
 
@@ -530,19 +534,19 @@ function giveHint() {
     const randomIndex = Math.floor(Math.random() * emptyCells.length);
     const { row, col } = emptyCells[randomIndex];
 
-    const currentBoard = sudokuLevels[currentLevel].find(
-      board => JSON.stringify(board.initial) === JSON.stringify(originalSudoku)
-    );
-
-    
-    
-    const solutionBoard = currentBoard.solution;
-    sudoku[row][col] = solutionBoard[row][col];
+    sudoku[row][col] = win[row][col];
 
     updateBoardUI(row, col, sudoku[row][col]);
     hintRemaining--;
     document.getElementById('hint-text').textContent = `${hintRemaining}/${maxHints}`;
-    check_win();
+    if (check_win()) {
+      showModal();
+      resetTimer();
+      resetTimer();
+
+      timer = 0;
+    }
+    
   }
 }
 
